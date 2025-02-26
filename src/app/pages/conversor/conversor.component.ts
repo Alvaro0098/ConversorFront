@@ -24,7 +24,7 @@ export class ConversorComponent {
   errorMessage: string = '';
   userData!: UserData;
   userId!: number | null;
-  tries: number = 0; // Inicializa los intentos
+  tries: number = 0;
   userName: string = '';
 
   constructor(
@@ -36,18 +36,17 @@ export class ConversorComponent {
   }
 
   ngOnInit(): void {
-    this.verifyUserId(); // Primero obtenemos el userId del token
+    this.verifyUserId();
 
     if (this.userId) {
-      this.loadUserData(); // Solo cargamos los datos si userId no es null
+      this.loadUserData();
     } else {
-      console.error('No userId found, skipping user data fetch.');
+      console.error('No se encontro userId');
     }
 
-    this.loadCurrencies(); // Luego cargamos las monedas
+    this.loadCurrencies();
   }
 
-  //obtiene userId del token
   verifyUserId(): void {
     const token = localStorage.getItem('token');
     if (token) {
@@ -62,14 +61,14 @@ export class ConversorComponent {
 
   loadUserData(): void {
     if (!this.userId) {
-      console.error('No userId found, skipping user data fetch.');
+      console.error('No se encontro el userId');
       return;
     }
 
     this.dataUserService.getUserData().subscribe(
       (data: UserData) => {
         this.userData = data;
-        this.userName = data.userName; // Asigna el nombre del usuario
+        this.userName = data.userName;
         this.tries = data.maxTries;
         console.log('Datos de usuario recibidos:', this.userData);
       },
@@ -114,13 +113,12 @@ export class ConversorComponent {
           this.loadUserData();
         },
         error: (err) => {
-          // Si el backend devuelve un BadRequest (400), capturamos el mensaje de error
           if (err.status === 400) {
-            this.errorMessage = err.error; // Asignamos el mensaje de error del backend
+            this.errorMessage = err.error;
           } else {
-            this.errorMessage = 'Error inesperado en la conversión'; // En caso de otro error
+            this.errorMessage = 'Error inesperado en la conversión';
           }
-          console.error('Error en la conversión', err); // Imprimimos el error para depuración
+          console.error('Error en la conversión', err);
         },
       });
   }

@@ -18,7 +18,7 @@ export class DataConversionService {
     const token = localStorage.getItem('token');
     console.log('Token antes de enviar petición:', token);
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`, // Agrega el token al encabezado
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
 

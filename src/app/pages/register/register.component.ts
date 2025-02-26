@@ -19,9 +19,9 @@ export class RegisterComponent {
 
   /** Intenta registrar al usuario en el back */
   async register(registerForm: NgForm) {
-    if (registerForm.invalid) return; // Evitar enviar datos vacíos
+    if (registerForm.invalid) return;
 
-    const { usuario, password } = registerForm.value; // Obtener valores del formulario
+    const { usuario, password } = registerForm.value;
 
     const registerData: RegisterUser = {
       username: usuario,
@@ -33,7 +33,7 @@ export class RegisterComponent {
 
       if (register?.success) {
         console.log('Usuario registrado con éxito');
-        this.router.navigate(['/login']); // Redirigir al login
+        this.router.navigate(['/login']);
       } else {
         console.error(register?.message || 'Error en el registro');
       }
@@ -42,5 +42,3 @@ export class RegisterComponent {
     }
   }
 }
-
-/** Datos de formulario de registro */
