@@ -1,0 +1,14 @@
+<main>
+    <div id="izquierda">
+        <h1>Conversor App</h1>
+    </div>
+    <div id="derecha">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <h2>Iniciar sesion</h2>
+            <input type="text" id="usuario" placeholder="Usuario" name="usuario" ngModel required>
+            <input type="password" id="password" placeholder="Contraseña" name="password" ngModel required>
+            <button [disabled]="loginForm.invalid" class="boton-resaltado" type="submit">Iniciar sesión</button>
+            <a class="register-link" [routerLink]="['/register']">Registrarse</a>
+        </form>
+    </div>
+</main>

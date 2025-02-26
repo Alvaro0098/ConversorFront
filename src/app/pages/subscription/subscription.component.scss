@@ -1,0 +1,58 @@
+@use "./../../../../public/styles/colors.scss";
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("./../../../../public/img/istockphoto-1340104701-612x612.jpg");
+}
+
+.subscription-container {
+  text-align: center;
+  background-color: whitesmoke;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  width: 350px;
+}
+
+h2 {
+  color: #424242;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  color: #f5f5f5;
+}
+
+.free {
+  background-color: #1565c0;
+}
+
+.trial {
+  background-color: rgb(255, 100, 100);
+}
+
+.pro {
+  background-color: #1e88e5;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}

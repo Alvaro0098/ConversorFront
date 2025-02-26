@@ -1,0 +1,100 @@
+<!-- Botón para abrir el modal -->
+<button class="btn-success" (click)="toggleForm()">➕ Add Currency</button>
+
+<!-- Tabla de monedas -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Symbol</th>
+      <th>Ic</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currency of currencies">
+      <td>{{ currency.id }}</td>
+      <td>{{ currency.code }}</td>
+      <td>{{ currency.symbol }}</td>
+      <td>{{ currency.ic }}</td>
+      <td>{{ currency.description }}</td>
+      <td class="actions">
+        <button class="btn-edit" (click)="toggleEditForm()">✏️</button>
+        <button class="btn-delete" (click)="deleteCurrency(currency.id)">🗑️</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--  crear moneda -->
+<div *ngIf="showForm" class="modal">
+  <div class="modal-content">
+    <h2>Create Currency</h2>
+    <div class="form-container">
+      <form #currencyForm="ngForm" (ngSubmit)="createCurrency(currencyForm)">
+        <div class="input-group">
+          <label>Code:</label>
+          <input type="text" name="code" required ngModel #code="ngModel">
+        </div>
+
+        <div class="input-group">
+          <label>Symbol:</label>
+          <input type="text" name="symbol" required ngModel #symbol="ngModel">
+        </div>
+
+        <div class="input-group">
+          <label>IC:</label>
+          <input type="number" name="ic" required min="0" ngModel #ic="ngModel">
+        </div>
+
+        <div class="input-group">
+          <label>Description:</label>
+          <input type="text" name="description" required ngModel #description="ngModel">
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-success" type="submit" [disabled]="currencyForm.invalid">Create</button>
+          <button class="btn-cancel" type="button" (click)="toggleForm()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- actualizar moneda -->
+<div *ngIf="showEditForm" class="modal">
+  <div class="modal-content">
+    <h2>Edit Currency</h2>
+    <div class="form-container">
+      <form #editCurrencyForm="ngForm" (ngSubmit)="updateCurrency(editCurrencyForm)">
+        <div class="input-group">
+          <label>Code:</label>
+          <input type="text" name="code" required ngModel #code="ngModel" [value]="selectedCurrency.code">
+        </div>
+
+        <div class="input-group">
+          <label>Symbol:</label>
+          <input type="text" name="symbol" required ngModel #symbol="ngModel" [value]="selectedCurrency.symbol">
+        </div>
+
+        <div class="input-group">
+          <label>IC:</label>
+          <input type="number" name="ic" required min="0" ngModel #ic="ngModel" [value]="selectedCurrency.ic">
+        </div>
+
+        <div class="input-group">
+          <label>Description:</label>
+          <input type="text" name="description" required ngModel #description="ngModel" [value]="selectedCurrency.description">
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-success" type="submit" [disabled]="editCurrencyForm.invalid">Save</button>
+          <button class="btn-cancel" type="button" (click)="closeEditForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
