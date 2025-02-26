@@ -21,7 +21,7 @@
       <td>{{ currency.ic }}</td>
       <td>{{ currency.description }}</td>
       <td class="actions">
-        <button class="btn-edit" (click)="toggleEditForm()">✏️</button>
+        <button class="btn-edit" (click)="toggleEditForm(currency)">✏️</button>
         <button class="btn-delete" (click)="deleteCurrency(currency.id)">🗑️</button>
       </td>
     </tr>
@@ -36,22 +36,22 @@
       <form #currencyForm="ngForm" (ngSubmit)="createCurrency(currencyForm)">
         <div class="input-group">
           <label>Code:</label>
-          <input type="text" name="code" required ngModel #code="ngModel">
+          <input type="text" name="code" required [(ngModel)]="selectedCurrency.code">
         </div>
 
         <div class="input-group">
           <label>Symbol:</label>
-          <input type="text" name="symbol" required ngModel #symbol="ngModel">
+          <input type="text" name="symbol" required ngModel [(ngModel)]="selectedCurrency.symbol">
         </div>
 
         <div class="input-group">
           <label>IC:</label>
-          <input type="number" name="ic" required min="0" ngModel #ic="ngModel">
+          <input type="number" name="ic" required min="0" ngModel [(ngModel)]="selectedCurrency.ic">
         </div>
 
         <div class="input-group">
           <label>Description:</label>
-          <input type="text" name="description" required ngModel #description="ngModel">
+          <input type="text" name="description" required ngModel [(ngModel)]="selectedCurrency.description">
         </div>
 
         <div class="form-actions">

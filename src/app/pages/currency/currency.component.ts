@@ -42,7 +42,8 @@ export class CurrencyComponent {
     this.showForm = !this.showForm;
   }
 
-  toggleEditForm(): void {
+  toggleEditForm(currency: Currency): void {
+    this.selectedCurrency = { ...currency };
     this.showEditForm = !this.showEditForm;
   }
 
@@ -107,8 +108,8 @@ export class CurrencyComponent {
       .updateCurrency(this.selectedCurrency.id, form.value)
       .subscribe({
         next: () => {
-          alert('Currency updated successfully');
-          this.toggleEditForm();
+          this.loadCurrencies(); // Recargar la lista después de actualizar
+          this.closeEditForm();
         },
         error: (error) => {
           console.error('Error updating currency:', error);
