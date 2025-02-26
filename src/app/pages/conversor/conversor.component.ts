@@ -8,11 +8,12 @@ import { DataConversionService } from '../../services/data-conversion.service';
 import { UserData } from '../../interfaces/usuario';
 import { DataUserService } from '../../services/data-user.service';
 import { jwtDecode } from 'jwt-decode';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-conversor',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent],
   templateUrl: './conversor.component.html',
   styleUrl: './conversor.component.scss',
 })

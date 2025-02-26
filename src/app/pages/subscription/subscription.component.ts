@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-subscription',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './subscription.component.html',
   styleUrl: './subscription.component.scss',
 })

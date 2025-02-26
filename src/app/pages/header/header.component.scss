@@ -1,0 +1,40 @@
+$color-texto-invertido: #f5f5f5;
+$gray-medium: #bdbdbd;
+$color-texto: #424242;
+$blue-light: #90caf9;
+$color-exito: #1e88e5;
+$color-primario: #1565c0;
+$color-warn: rgb(255, 100, 100);
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-primario;
+  padding: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    font-size: 1.8rem;
+    color: $color-texto-invertido;
+  }
+
+  nav {
+    display: flex;
+    gap: 16px;
+
+    a {
+      color: $color-texto-invertido;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $blue-light;
+        color: $color-texto;
+      }
+    }
+  }
+}
